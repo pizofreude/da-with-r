@@ -6,23 +6,26 @@ Welcome to the Data Analysis with R Programming repository, with R as a data cen
 
 ```
 da-with-r/
-├── data/
-│   ├── raw/            # Original, immutable data dumps.
-│   └── processed/      # Cleaned & processed data ready for analysis.
-├── notebooks/
-│   └── exploratory/    # RMarkdown or Jupyter notebooks for EDA.
-├── scripts/
-│   ├── data_cleaning.R # Scripts for cleaning datasets.
-│   ├── analysis.R      # Scripts for analysis and visualization.
-│   └── functions.R     # Custom R functions.
-├── reports/
-│   ├── figures/        # Generated plots and figures.
-│   └── final_report.Rmd # Final RMarkdown report.
-├── docs/               # Project documentation, instructions, etc.
-├── tests/              # Unit tests for R scripts/functions.
 ├── .gitignore
 ├── README.md
-└── requirements.txt
+├── da-with-r.Rproj         # RStudio project file
+├── renv.lock               # renv lockfile for package reproducibility
+├── renv/                   # renv local library (auto-created; do not edit manually)
+├── requirements.txt        # (Optional; renv/renv.lock preferred)
+├── data/
+│   ├── raw/                # Original, immutable data dumps.
+│   └── processed/          # Cleaned & processed data ready for analysis.
+├── notebooks/
+│   └── exploratory/        # RMarkdown or Jupyter notebooks for EDA.
+├── scripts/
+│   ├── data_cleaning.R     # Scripts for cleaning datasets.
+│   ├── analysis.R          # Scripts for analysis and visualization.
+│   └── functions.R         # Custom R functions.
+├── reports/
+│   ├── figures/            # Generated plots and figures.
+│   └── final_report.Rmd    # Final RMarkdown report.
+├── docs/                   # Project documentation, instructions, etc.
+├── tests/                  # Unit tests for R scripts/functions.
 ```
 
 ## 🚀 Getting Started
