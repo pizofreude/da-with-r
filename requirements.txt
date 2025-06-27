@@ -1,0 +1,13 @@
+tidyverse
+lubridate
+janitor
+skimr
+dplyr
+ggplot2
+readr
+stringr
+forcats
+tibble
+knitr
+rmarkdown
+testthat
