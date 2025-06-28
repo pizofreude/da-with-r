@@ -56,7 +56,7 @@ file.copy(src, dest)
 ```
 
 ```{r}
-src <- "/cloud/project/notebooks/1_notetaking/new_csv_file.csv"
+src <- "new_csv_file.csv"
 dest <- file.path(getwd(), "destination_folder", "new_csv_file.csv")
 
 file.copy(src, dest)
