@@ -1,0 +1,104 @@
+---
+title: "dataframe_matrices"
+output: html_document
+---
+
+# Data frame
+
+There are a few key things to keep in mind when working with data frames: 
+
+Data frames can include many different types of data, including numeric, logical, or character.
+
+Data frames can have only one element in each cell.
+
+Each column should be named. 
+
+Each column should consist of elements of the same data type.
+
+If you need to manually create a data frame in R, you can use the data.frame() function.
+
+```{r}
+data.frame(x = c(1, 2, 3) , y = c(1.5, 5.5, 7.5))
+```
+
+## Subset of a Data frame
+
+Use the extract operator to extract a subset from a data frame. When you use this operator on a data frame, it takes two arguments: the row(s) and column(s) you’d like to extract, separated by a comma. As an example, name the data frame above z. Then, to extract the element from the second row and the first column, use the code z[2,1], which returns a value of 2:
+
+```{r}
+z <- data.frame(x = c(1, 2, 3) , y = c(1.5, 5.5, 7.5))
+z[2,1]
+```
+# Working with Files
+
+When you’re doing data analysis, you won’t usually create a data frame yourself. Instead, you’ll import data from another source, such as  a .csv file, a relational database, or a software program. For this reason, it’s essential to be able to work with files in R. In this section, you’ll explore a few of the most useful functions for working with files, including commands to create, copy, and delete files in R. 
+
+## Create a file
+
+Use the file.create() function to create a blank file. Place the name and the type of the file in the parentheses of the function. Your file types will usually be something like .txt, .docx, or .csv.
+
+```{r}
+file.create("new_csv_file.csv") 
+```
+
+## Copy a file
+
+```{r}
+file.create("new_csv_file.csv") 
+```
+
+Copy a file with the file.copy() function. In the parentheses, add the name of the file to be copied. Then, enter a comma, and add the name of the destination folder that you want to copy the file to. 
+
+```{r}
+src <- "/full/path/to/new_csv_file.csv""
+dest <- file.path(getwd(), "destination_folder", "new_csv_file.csv")
+file.copy(src, dest)
+```
+
+```{r}
+src <- "/cloud/project/notebooks/1_notetaking/new_csv_file.csv"
+dest <- file.path(getwd(), "destination_folder", "new_csv_file.csv")
+
+file.copy(src, dest)
+
+```
+```{r}
+file.exists(src) 
+```
+```{r}
+getwd()
+```
+
+### File deletion
+
+You can delete R files with the unlink() function. Enter the file’s name in the parentheses of the function.
+
+```{r}
+file.create('new_text_file.txt')
+
+```
+```{r}
+unlink('new_text_file.txt')
+```
+
+
+# Matrices 
+
+A matrix is a two-dimensional collection of data elements. This means it has both rows and columns. By contrast, a vector is a one-dimensional sequence of data elements. But like vectors, matrices can only contain a single data type. For example, you can’t have both logicals and numerics in a matrix. 
+
+To create a matrix in R, you can use the matrix() function. The matrix() function has two main arguments that you enter in the parentheses. First, add a vector. The vector contains the values you want to place in the matrix. Next, add at least one matrix dimension. You can choose to specify the number of rows or the number of columns by using the code nrow = or ncol =. 
+
+For example, to create a 2x3 (two rows by three columns) matrix containing the values 3-8, enter a vector containing that series of numbers: c(3:8). Then, enter a comma. Finally, enter nrow = 2 to specify the number of rows. Run the code: 
+
+```{r}
+matrix(c(3:8), nrow = 2)
+```
+
+
+You can also choose to specify the number of columns (ncol = ) instead of the number of rows (nrow = ). Run the code: 
+
+```{r}
+matrix(c(3:8), ncol = 2)
+```
+
+
