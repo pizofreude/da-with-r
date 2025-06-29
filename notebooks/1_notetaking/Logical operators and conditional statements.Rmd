@@ -1,0 +1,145 @@
+---
+title: "Logical operators and conditional statements"
+output: html_document
+---
+
+Logical operator allows you to combine logical statements and return a logical value, TRUE or FALSE.
+
+We'll be working with the airquality dataset available in R.
+
+It contains data about daily air quality measurements in New York from May to September of 1973. 
+
+Select the datasets box in the System Library list of packages.  
+
+Run the following command data("airquality") in the console to load the airquality dataset.
+
+```{r}
+data('airquality')
+```
+
+Then, run the command View(airquality) to open the dataset in the Script Editor.
+
+```{r}
+View(airquality)
+```
+
+This dataset is a data frame with six columns: Ozone (the ozone measurement), Solar.R (the solar measurement), Wind (the wind measurement), Temp (the temperature in Fahrenheit), and the Month and Day these measurements were taken. Each row represents a specific month and day combination. 
+
+## AND, OR, NOT Operators
+
+We'll explore how the AND, OR, and NOT operators might be helpful in this situation.
+
+### AND Operator
+
+You want to find observations (rows) in which conditions are both extremely sunny and windy. You define this as observations that have a Solar measurement of over 150 and a Wind measurement of over 10.  
+
+```{r}
+airquality[, "Solar.R"] > 150 & airquality[, "Wind"] > 10
+```
+### OR Operator
+
+Next, you want to specify rows where it’s extremely sunny or it’s extremely windy, which you define as having a Solar measurement of over 150 or a Wind measurement of over 10. 
+
+```{r}
+airquality[, "Solar.R"] > 150 | airquality[, "Wind"] > 10
+```
+### NOT Operator
+
+If you just want to focus on the weather measurements for days that aren't the first day of the month, use the NOT condition.
+
+```{r}
+airquality[, "Day"] != 1
+```
+Finally, you want to focus on scenarios that are neither extremely sunny nor extremely windy, based on your previous definitions of extremely sunny and extremely windy. In other words, the following statement should not be true: either a Solar measurement greater than 150 or a Wind measurement greater than 10.
+
+Notice that this statement is the opposite of the OR statement used above. To express this statement in R, you can put an exclamation point (!) in front of the previous OR statement: 
+
+```{r}
+!(airquality[, "Solar.R"] > 150 | airquality[, "Wind"] > 10)
+```
+
+
+## Conditional statements 
+
+A conditional statement is a declaration that, if a certain condition holds, then a certain event must take place. For example, “If the temperature is above freezing, then I will go outside for a walk.” If the first condition is true (the temperature is above freezing), then the second condition will occur (I will go for a walk). Conditional statements in R code have a similar logic. 
+
+Conditional statements in R using three related statements: 
+
+- if()
+
+- else()
+
+- else if()
+
+## if statement
+
+```{r}
+x <- 4
+if (x > 0) {
+  print("x is a positive number")
+}
+```
+Here’s an example using the airquality data:
+
+```{r}
+if(airquality[1, "Temp"] < 80) {print("It's not a hot day.")}
+```
+## else statement
+
+The else statement is used in combination with an if statement.
+
+```{r}
+x <- 7
+if (x > 0) {
+  print ("x is a positive number")
+} else {
+  print ("x is either a negative number or zero")
+}
+```
+```{r}
+x <- -7
+if (x > 0) {
+  print("x is a positive number")
+} else {
+  print ("x is either a negative number or zero")
+}
+```
+
+Here’s an example using the airquality data:
+```{r}
+if (airquality$Temp[1] < 80) {
+  print("It's not a hot day!")
+} else {
+  print("It's a hot day.")
+}
+```
+## else if statement
+
+```{r}
+x <- -1
+
+if (x < 0){
+  print('x is a negative number')
+} else if (x == 0){
+  print('x equals to zero')
+} else {
+  print('x is a positive number')
+}
+```
+Here’s an example using the airquality data:
+
+```{r}
+ozone_level <- airquality[1,"Ozone"]
+if(is.na(ozone_level)){
+  print("Ozone reading is missing for the first day.")
+} else if(ozone_level < 30){ 
+  print("Low ozone level.")
+} else if(ozone_level < 100){ 
+  print("Moderate ozone level.")
+} else{
+  print("High ozone level.")
+}
+```
+## Key takeaways
+
+In R, the logical operators for AND (&), OR (|), and NOT(!) can be used to check a condition and return a logical data type. In R, logical data is presented as T or TRUE when a condition is met, and F or FALSE when it is not. Additionally, you can use if, else, and else if statements to complete a task depending on whether one or more conditions are met. Using logical operators and conditional statements with your data can be a powerful analytical tool when you need to find observations that match specific criteria. 
