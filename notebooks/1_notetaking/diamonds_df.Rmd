@@ -1,0 +1,50 @@
+---
+title: "diamonds_df"
+output: html_document
+---
+
+## Import tidyverse(ggplot2) library
+```{r}
+library('ggplot2')
+```
+
+## Load diamonds dataset
+```{r}
+data(diamonds)
+```
+
+
+## Explore dataset
+```{r}
+View(diamonds)
+```
+
+```{r}
+head(diamonds)
+```
+
+```{r}
+tail(diamonds)
+```
+
+
+### Get df structures
+
+```{r}
+str(diamonds)
+```
+
+```{r}
+colnames(diamonds)
+```
+```{r}
+glimpse(diamonds)
+```
+
+## Mutate
+
+```{r}
+library('tidyverse')
+mutate(diamonds, carat_2=carat * 100)
+```
+
