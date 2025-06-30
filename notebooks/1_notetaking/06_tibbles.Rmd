@@ -1,0 +1,48 @@
+---
+title: "06_tibbles"
+output: html_document
+---
+
+Tibbles are a streamlined variation of data frames. 
+
+Tibbles automatically pull up only the first 10 rows of a dataset and only
+as many columns as can fit on your screen.
+ 
+Unlike data frames, tibbles maintain the integrity of your variable names
+and data types throughout, ensuring consistency in your data.
+
+To put in perspective, standard data frame in `R` is like a `CSV` file whereas
+tibbles act like `Parquet` file.
+
+## Load Diamond dataaset
+
+```{r}
+install.packages("tidyverse")
+library(tidyverse) 
+data(diamonds)
+```
+
+```{r}
+View(diamonds)
+```
+
+## Create a tibble
+
+Use the function `as_tibble()` to create a tibble from an existing data frame or matrix. 
+
+```{r}
+as_tibble(diamonds)
+```
+
+We must save the diamonds dataset as a tibble:
+
+```{r}
+diamonds_tibble <- as_tibble(diamonds)
+```
+
+We can then examine the diamonds tibble:
+
+```{r}
+diamonds_tibble
+```
+
