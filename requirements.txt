@@ -11,3 +11,4 @@ tibble
 knitr
 rmarkdown
 testthat
+arrow
