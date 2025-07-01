@@ -13,3 +13,5 @@ rmarkdown
 testthat
 arrow
 here
+skimr
+janitor
