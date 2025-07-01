@@ -1,0 +1,24 @@
+---
+title: "08_data_cleaning"
+output: html_document
+---
+
+For data wrangling, we normally do data cleaning, standardize, manipulate, and visualize data.
+
+## Data Cleaning
+
+Useful `R` packages for data cleaning:
+- `Here`: Makes referencing files easier
+- `skimr`: Makes summarizing data easier and let us skim through it faster
+- `Janitor`: Simplify data cleaning tasks
+
+```{r}
+renv::install('here')
+```
+```{r}
+renv::install('skimr')
+```
+```{r}
+renv::install('janitor')
+```
+
