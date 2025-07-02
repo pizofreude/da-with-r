@@ -1,0 +1,41 @@
+---
+title: "12_bias_function"
+output: html_document
+---
+
+Bias function denotes by the average amount that the actual outcome is greater than the predicted outcome.
+
+- **Interpretation of Results:**
+    - **Close to Zero:** Indicates an **unbiased** model or prediction.
+    - **High Result (positive or negative):** Suggests that your data or model might be **biased**.
+        - A positive bias means actual values are consistently higher than predicted.
+        - A negative bias means actual values are consistently lower than predicted (predictions are too high).
+- **Benefit:** Provides actionable insights to identify and address systemic issues causing inaccurate predictions.
+
+## Import bias library
+
+```{r}
+renv::install('SimDesign')
+```
+```{r}
+library(SimDesign)
+```
+
+## Compare actual temperature vs forecast
+
+```{r}
+actual_temp <- c(32.3, 35.6, 33.3, 36.6, 35.6, 36.7)
+forecast_temp <- c(32.0, 34.5, 32.2, 35.6, 34.4, 35.5)
+
+bias(actual_temp, forecast_temp)
+```
+
+## Compare sales result bias
+
+```{r}
+actual_sales <- c(153, 314, 234, 524, 422, 243)
+predicted_sales <- c(233, 432, 524, 252, 243, 423)
+
+bias(actual_sales, predicted_sales)
+```
+
