@@ -118,7 +118,7 @@ Great. Now it's time to calculate some summary statistics! Calculate the total n
 ```{r}
 
 example_df <- bookings_df %>% 
-  mutate(number_canceled = sum(is_canceled), average_lead_time = mean(lead_time))
+  summarize(number_canceled = sum(is_canceled), average_lead_time = mean(lead_time))
 
 
 head(example_df)
