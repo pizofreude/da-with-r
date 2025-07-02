@@ -3,3 +3,68 @@ title: "11_transforming_data"
 output: html_document
 ---
 
+## Manually create data frame
+
+```{r}
+id <- c(1:10)
+
+name <- c("John Mendes", "Rob Stewart", "Rachel Abrahamson", "Christy Hickman", "Johnson Harper", "Candace Miller", "Carlson Landy", "Pansy Jordan", "Darius Berry", "Claudia Garcia")
+
+job_title <- c("Professional", "Programmer", "Management", "Clerical", "Developer", "Programmer", "Management", "Clerical", "Developer", "Programmer")
+
+employee <- data.frame(id, name, job_title)
+```
+
+## Import necessary library
+```{r}
+library(tidyr)
+```
+
+## Important transforming functions
+
+There are 3 important functions in `R` for data transformation:
+- `separate()`
+- `unite()`
+- `mutate()`
+
+
+```{r}
+print(employee)
+```
+
+### Separate name into fore name and last name
+
+```{r}
+separate(employee, name, into=c('first_name', 'last_name'), sep = ' ')
+```
+
+### Unite columns into single column
+
+```{r}
+first_name <- c("John", "Rob", "Rachel", "Christy", "Johnson", "Candace", "Carlson", "Pansy", "Darius", "Claudia")
+
+last_name <- c("Mendes", "Stewart", "Abrahamson", "Hickman", "Harper", "Miller", "Landy", "Jordan", "Berry", "Garcia")
+
+job_title <- c("Professional", "Programmer", "Management", "Clerical", "Developer", "Programmer", "Management", "Clerical", "Developer", "Programmer")
+
+employee <- data.frame(id, first_name, last_name, job_title)
+
+print(employee)
+```
+```{r}
+unite(employee, 'name', first_name, last_name, sep = ' ')
+```
+
+### Add columns with Calculation using `mutate()`
+
+```{r}
+View(penguins)
+```
+
+E.g. body_mass is measured in gram. Let's say we need another column of body mass in kg:
+
+```{r}
+penguins %>% 
+  mutate(body_mass_kg = body_mass_g/1000, flipper_length_m = flipper_length_mm/1000)
+```
+
