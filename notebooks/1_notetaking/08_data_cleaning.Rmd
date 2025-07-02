@@ -21,4 +21,65 @@ renv::install('skimr')
 ```{r}
 renv::install('janitor')
 ```
+## Import necessary libraries
+```{r}
+library('here')
+library('skimr')
+library('janitor')
+library('dplyr')
+```
+
+## Load Palmer Penguins dataset
+```{r}
+renv::install('palmerpenguins')
+library('palmerpenguins')
+```
+## Explore dataset
+```{r}
+skim_without_charts(penguins)
+```
+```{r}
+glimpse(penguins)
+```
+
+```{r}
+head(penguins)
+tail(penguins)
+```
+To select only species column:
+```{r}
+penguin_species <- penguins %>% 
+                      select(species)
+penguin_species
+```
+
+To omit only `species` column and shows the rest:
+```{r}
+penguin_omit_species <- penguins %>% 
+                          select(-species)
+penguin_omit_species
+```
+
+To rename column:
+
+```{r}
+penguins %>% 
+  rename(island_new = island)
+```
+
+We can change the column name either to capital or small letters:
+
+```{r}
+rename_with(penguins, toupper)
+```
+
+```{r}
+rename_with(penguins, tolower)
+```
+
+To ensure there's only characters, numbers, and underscores in column names:
+
+```{r}
+clean_names(penguins)
+```
 
