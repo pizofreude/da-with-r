@@ -1,0 +1,30 @@
+---
+title: "14_data_viz_ggplot2"
+output: html_document
+---
+
+## Import necessary libraries
+
+```{r}
+library(ggplot2)
+library(palmerpenguins)
+```
+
+## EDA
+
+```{r}
+data("penguins")
+View(penguins)
+```
+
+## Data viz
+
+```{r}
+ggplot(data = penguins) + geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g))
+```
+
+Alternative:
+```{r}
+ ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = body_mass_g)) +  geom_point()
+```
+
