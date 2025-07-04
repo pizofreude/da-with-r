@@ -1,0 +1,116 @@
+---
+title: "16_aesthetics"
+output: html_document
+---
+
+## Import necessary libraries
+
+```{r}
+library(ggplot2)
+library(palmerpenguins)
+```
+
+## Plotting
+
+```{r}
+ggplot(data=penguins) +
+  geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g))
+```
+
+## Manipulate the shape, size, and color for datapoints
+
+```{r}
+ggplot(data=penguins) +
+  geom_point(mapping = aes(x=flipper_length_mm, y=body_mass_g, color=species))
+```
+ ### Shape
+ 
+```{r}
+ggplot(data=penguins) +
+  geom_point(mapping = aes(x=flipper_length_mm, y=body_mass_g, shape=species))
+```
+### Color & Shape
+
+
+```{r}
+ggplot(data=penguins) +
+  geom_point(mapping = aes(x=flipper_length_mm, y=body_mass_g, color=species, shape=species))
+```
+
+### Using Alpha for dominant datapoints for high density datasets
+
+This affect transparencey or color intensity of the aesthetics.
+```{r}
+ggplot(data=penguins) +
+  geom_point(mapping = aes(x=flipper_length_mm, y=body_mass_g, alpha=species))
+```
+### Generalize color without mapping
+
+
+```{r}
+ggplot(data=penguins) +
+  geom_point(mapping = aes(x=flipper_length_mm, y=body_mass_g), color="green")
+```
+
+## Geom functions
+
+```{r}
+ggplot(data=penguins) +
+  geom_smooth(mapping = aes(x=flipper_length_mm, y=body_mass_g))
+```
+
+```{r}
+ggplot(data=penguins) +
+  geom_smooth(mapping = aes(x=flipper_length_mm, y=body_mass_g)) +
+  geom_point(mapping = aes(x=flipper_length_mm, y=body_mass_g))
+```
+### Linetype
+
+
+```{r}
+ggplot(data=penguins) +
+  geom_smooth(mapping = aes(x=flipper_length_mm, y=body_mass_g, linetype = species))
+```
+## Jitter
+
+
+```{r}
+ggplot(data=penguins) +
+  geom_jitter(mapping = aes(x=flipper_length_mm, y=body_mass_g))
+```
+
+## Bar charts
+
+```{r}
+ggplot(data=diamonds) +
+  geom_bar(mapping = aes(x=cut))
+```
+### Manipulate bar colors
+```{r}
+ggplot(data=diamonds) +
+  geom_bar(mapping = aes(x=cut, color=cut))
+```
+To get fill colored bar instead of just the outline colored:
+```{r}
+ggplot(data=diamonds) +
+  geom_bar(mapping = aes(x=cut, fill=cut))
+```
+### stacked bar chart
+
+```{r}
+ggplot(data=diamonds) +
+  geom_bar(mapping = aes(x=cut, fill=clarity))
+```
+
+## Smoothing
+
+Smoothing helps data professionals reveal trends. When scatterplots alone lack clarity, smoothing adds a trend line, making underlying patterns in the data easier to spot for casual observers. ggplot2 offers two smoothing methods: Loess is best for plots with fewer than 1,000 points, it creates a flexible, local smoother. Gam is ideal for larger datasets because it uses a more robust model for general trends. Smoothing enhances data communication, adding a visual cue to highlight trends so data visualizations become clearer and more impactful for audiences.
+
+
+
+
+
+
+
+
+
