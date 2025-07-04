@@ -106,9 +106,33 @@ ggplot(data=diamonds) +
 
 Smoothing helps data professionals reveal trends. When scatterplots alone lack clarity, smoothing adds a trend line, making underlying patterns in the data easier to spot for casual observers. ggplot2 offers two smoothing methods: Loess is best for plots with fewer than 1,000 points, it creates a flexible, local smoother. Gam is ideal for larger datasets because it uses a more robust model for general trends. Smoothing enhances data communication, adding a visual cue to highlight trends so data visualizations become clearer and more impactful for audiences.
 
+## Facets function
 
+Display smaller groups or subset of the data. There are two types of facet functions:
+1) `facet_wrap()`: for single variable
+2) `facet_grid()`: for double variables
 
+```{r}
+ggplot(data=penguins, aes(x=flipper_length_mm, y=body_mass_g)) +
+  geom_point(aes(colour = species)) +
+  facet_wrap(~species)
+```
 
+## Facets of Diamonds
+
+```{r}
+ggplot(data=diamonds) +
+  geom_bar(mapping=aes(x=color, fill=cut)) +
+  facet_wrap(~cut)
+```
+
+### Dual variable facets on penguins: Sex vs. Species
+
+```{r}
+ggplot(data=penguins) +
+  geom_point(mapping=aes(x=flipper_length_mm, y=body_mass_g, color=species)) +
+  facet_grid(sex~species)
+```
 
 
 
