@@ -1,0 +1,75 @@
+---
+title: "Three Penguin Species Analysis"
+author: "Pizofreude"
+date: "2025-07-06"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# The above grey chunk basically means that your code will be shown in your final report when you’re ready to render it.
+```
+
+
+
+## Setting up analytics environment
+
+Notes: Setting up my `R` environment by loading `tidyverse` and `palmerpenguins` packages after their installation via `renv`.
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(palmerpenguins)
+library(here)
+library(skimr)
+library(janitor)
+library(dplyr)
+library(SimDesign)
+```
+
+## Simple EDA
+
+Conducting basic EDA for `penguins` dataset:
+
+```{r}
+head(penguins)
+```
+
+```{r}
+tail(penguins)
+```
+
+```{r}
+colnames(penguins)
+```
+
+```{r}
+skim_without_charts(penguins)
+```
+```{r}
+glimpse(penguins)
+```
+## Data Cleaning
+
+```{r}
+clean_names(penguins)
+```
+
+```{r}
+bias(penguins$flipper_length_mm, penguins_raw$`Flipper Length (mm)`)
+```
+## Data Viz
+
+```{r}
+base <- ggplot(data = penguins) +
+  geom_point(mapping = aes(x=flipper_length_mm, y=body_mass_g, color=species)) +
+  labs(title = 'Palmer Penguins: Body Mass vs. Flipper Length', subtitle = 'Sample of Three Penguins Species',
+       caption = 'Data collected by Dr. Kristen Gorman in 2007-2009')
+
+base + annotate('text', x=220, y=3500, label='The Gentoos are the largest', color='medium blue',
+             fontface='bold', size=4.5, angle=25)
+```
+
+## Published Report on `RPubs.com`
+
+View live report on [R Pubs](http://rpubs.com/pizofreude/three-penguin-species-analysis)
