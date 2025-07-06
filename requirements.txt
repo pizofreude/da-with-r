@@ -16,3 +16,5 @@ here
 skimr
 janitor
 SimDesign
+packrat
+rsconnect
