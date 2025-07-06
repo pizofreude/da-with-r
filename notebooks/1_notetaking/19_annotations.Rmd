@@ -3,3 +3,86 @@ title: "19_annotations"
 output: html_document
 ---
 
+## Import important libraries
+
+```{r}
+library(ggplot2)
+library(palmerpenguins)
+```
+## Labels and Annotations
+
+Labels add text outside the grid box.
+
+```{r}
+ggplot(data = penguins) +
+  geom_point(mapping = aes(x=flipper_length_mm, y=body_mass_g, color=species)) +
+  labs(title = 'Palmer Penguins: Body Mass vs. Flipper Length', subtitle = 'Sample of Three Penguins Species',
+       caption = 'Data collected by Dr. Kristen Gorman in 2007-2009')
+```
+
+Annotations add text inside the grid box:
+```{r}
+ggplot(data = penguins) +
+  geom_point(mapping = aes(x=flipper_length_mm, y=body_mass_g, color=species)) +
+  labs(title = 'Palmer Penguins: Body Mass vs. Flipper Length', subtitle = 'Sample of Three Penguins Species',
+       caption = 'Data collected by Dr. Kristen Gorman in 2007-2009') +
+  annotate('text', x=220, y=3500, label='The Gentoos are the largest', color='medium blue',
+           fontface='bold', size=4.5, angle=25)
+```
+
+## Using variable for base plot
+
+```{r}
+p <- ggplot(data = penguins) +
+  geom_point(mapping = aes(x=flipper_length_mm, y=body_mass_g, color=species)) +
+  labs(title = 'Palmer Penguins: Body Mass vs. Flipper Length', subtitle = 'Sample of Three Penguins Species',
+       caption = 'Data collected by Dr. Kristen Gorman in 2007-2009')
+
+p + annotate('text', x=220, y=3500, label='The Gentoos are the largest', color='medium blue',
+             fontface='bold', size=4.5, angle=25)
+```
+
+## Savings viz
+
+1) Using Export feature of RStudio or Posit Cloud or `Save image as..` option in R Markdown.
+2) Using ggplot `ggsave()` function. By default, it saves the last image generated in notebook or R console.
+3) Using graphic devices. A graphics device allows a plot to appear on your computer. Examples include:
+
+  - A window on your computer (screen device)
+  
+  - A PDF, PNG, or JPEG file (file device)
+  
+  - An SVG, or scalable vector graphics file (file device)
+  
+
+### Using ggplot
+
+```{r}
+ggsave('three_penguin_species.png')
+```
+
+### Using graphic devices
+
+#### `dev.off()`
+
+For png:
+```{r}
+png(file = "exampleplot.png", bg = "transparent")
+plot(1:10)
+rect(1, 5, 3, 7, col = "white")
+dev.off()
+```
+For pdf:
+```{r}
+pdf(file = "/Users/username/Desktop/example.pdf",    
+       width = 4,     
+       height = 4) 
+plot(x = 1:10,     
+        y = 1:10)
+abline(v = 0)
+text(x = 0, y = 1, labels = "Random text")
+dev.off()
+```
+
+
+
